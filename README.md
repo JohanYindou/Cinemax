@@ -13,6 +13,6 @@ Pour l'utiliser il faut une clée API.
  <br>
 La mienne est la suivante : 1e6e9ace.
  <br>
-La requête à la forme suivante : <https://www.omdbapicom/?${searchValue}&apikey=1e6e9ace>
+La requête à la forme suivante : <https://www.omdbapicom/?s=${searchValue}&apikey=1e6e9ace>
  <br>
 *${searchValue}* étant le nom du film recherché.
