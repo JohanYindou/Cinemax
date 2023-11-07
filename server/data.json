@@ -1,5 +1,8 @@
 {
-    "favorites": {
-        "exemple": "filmID"
-    }
+  "favorites": [
+    { "id": "tt4244162", "movie": "tt4244162" },
+    { "id": "tt11738830", "movie": "tt11738830" },
+    { "id": "tt1630029", "movie": "tt1630029" },
+    { "id": "tt0120741", "movie": "tt0120741" }
+  ]
 }

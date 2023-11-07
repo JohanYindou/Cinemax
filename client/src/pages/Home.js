@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import "./styles.css";
-// Import du logo interpolation dans JSX
-import cinemaxLogo from "./assets/cinemax-lg.png";
+import cinemaxLogo from "../assets/cinemax-lg.png";
+import Search from "../components/Search";
+import Movies from "../components/Movies";
 
-// Nos composants
-import Search from "./components/Search";
-import Movies from "./components/Movies";
 
 export default function App() {
   // OMDB API
