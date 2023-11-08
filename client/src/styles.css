@@ -217,3 +217,9 @@ input[type="text"]:focus {
   object-fit: none;
   padding-top: 0;
 }
+
+.hero {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
