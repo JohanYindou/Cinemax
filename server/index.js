@@ -34,9 +34,9 @@ app.use(express.urlencoded({ extended: true }),cors());
 // Route permettant de traiter l'enregistrement d'un film dans la liste des favoris
 app.post('/api/save', (req, res) => {
   const imdbID = req.body.imdbID; // On récupère les données envoyées par le formulaire
-  Save(imdbID); // On appelle la fonction Save en lui envoyant les données
+  const saveStatus = Save(imdbID);// On appelle la fonction Save en lui envoyant les données
   // Vérification du statut de la fonction Save
-  if (Save(imdbID)) {
+  if (saveStatus) {
     res.status(200).send('Le film a bien été ajouté à vos favoris !');
   } else {
     res
