@@ -57,7 +57,7 @@ Lancez le serveur de développement `npm start` ou `npm run dev` pour vitejs.
 
 Pour les composants, dans ce projet nous avons l'architecture suivante :
 
-```
+```bash
 public
    ├── index.html // Point d'entrée pour React
 src
