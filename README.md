@@ -35,7 +35,7 @@ Pour travailler avec React on dois intaller NodeJS et NPM. 2 solutions s'offre Ã
 create-react-app
 
 ```bash
-npm create-react-app cinemax
+npx create-react-app cinemax
 ```
 
 ou vitejs
