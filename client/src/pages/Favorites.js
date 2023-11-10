@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movies from '../components/Movies';
+import Nav from '../components/Nav';
 import cinemaxLogo from '../assets/cinemax-lg.png';
 
 const Favorites = () => {
@@ -9,9 +10,21 @@ const Favorites = () => {
   const [movies, setMovies] = useState([]);
   const API = 'https://www.omdbapi.com/?apikey=1e6e9ace';
 
+  /**
+   * Ici on fetch l'api express avec le contenu du fichier JSON (data.json)
+   * Ensuite nous mettons notre state favorites à jour avec les données de l'api
+   * Attention la sturcture de base du fetch étant un tableau principal, il faut
+   * cibler le contenu qui se trouve dans celui-ci (data.favorites)
+   */
+
   const fetchFavorites = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/favorites');
+      /**
+       * On initialise une boucle "for of" afin de s'assurer que chaque
+       * tour de la boucle soit terminé avant de passer au suivant sans
+       * problème
+       */
+      const response = await fetch('/api/favorites');
       const data = await response.json();
       if (data.favorites) {
         setFavorites(data.favorites);
@@ -30,13 +43,13 @@ const Favorites = () => {
         const response = await fetch(API + '&i=' + item.movie);
         const data = await response.json();
         moviesArray.push({
-          imbdID: data.imbdID,
+          imdbID: data.imdbID,
           Title: data.Title,
           Poster: data.Poster,
         });
-        if (moviesArray.length > 0) {
-          setMovies(moviesArray);
-        }
+      }
+      if (moviesArray.length > 0) {
+        setMovies(moviesArray);
       }
     } catch (error) {
       console.log(
@@ -44,22 +57,31 @@ const Favorites = () => {
       );
     }
   };
+
+  // On lance la récupération des favoris dans le JSON
   useEffect(() => {
     fetchFavorites();
   }, []);
 
+  /**
+   * On lance la récupération des films dans l'API OMDB
+   * Seulement lorsque le state favorites est mis à jour
+   */
   useEffect(() => {
     fetchMovies();
   }, [favorites]);
 
   return (
     <>
-      <div className='hero'>
-        <img src={cinemaxLogo} className="logo" alt="logo cinemax" />
-        <h1>Favorites</h1>
-      </div>
-      <div>
-        <Movies movies={movies} />
+      <Nav />
+      <div className="App">
+        <div className="Hero">
+          <img src={cinemaxLogo} className="logo" alt="logo cinemax" />
+          <h1>Favorites</h1>
+        </div>
+        <div>
+          <Movies movies={movies} />
+        </div>
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 // Ce composant rprésente la barre de recherche
 const Search = ({ search, setSearch, searchMovies }) => {
-  // On parameètre la fonction hundleSubmit pour récuperer la valeure
+  // On paramètre la fonction hundleSubmit pour récuperer la valeure
   const handleSubmit = (e) => {
     // On récupère la valeur
     e.preventDefault();

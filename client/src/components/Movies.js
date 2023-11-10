@@ -12,7 +12,7 @@ const Movies = ({ movies }) => {
           <form
             className="favorite"
             method="POST"
-            action="http://localhost:5000/api/save">
+            action="/api/save">
             <input type="hidden" name="imdbID" value={movie.imdbID} />
             <button type="submit" className="btn-favorite">
               <img
@@ -33,7 +33,7 @@ const Movies = ({ movies }) => {
             />
             <h3>{movie.Title}</h3>
             <p>
-              Voir les détails
+              Voir les détails 
               <a href={imdb + movie.imdbID} target="_blank">
                 IMDB
               </a>
