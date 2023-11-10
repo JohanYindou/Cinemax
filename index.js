@@ -15,7 +15,7 @@ const Save = require('./functions/Save'); // Importation de la fonction Save
 const path = require('path'); //Module pour gérer les chemins de fichiers
 // const Delete = require("./functions/Delete"); // Importation de la fonction Delete
 
-// ------------------------- ROUTES ------------------------- //
+// ------------------------- ROUTES API ------------------------- //
 
 /**
  * Middleware
@@ -32,15 +32,11 @@ const path = require('path'); //Module pour gérer les chemins de fichiers
 app.use(express.urlencoded({ extended: true }), cors());
 
 // Extension permettant au serveur de lire et renvoyer du json
-app.use(express.json); 
+app.use(express.json()); 
 
 // Définition du dossier build/dist pour les fichier statiques
-app.use(express.static("/client/build"));
+app.use(express.static("./client/build"));
 
-// Route principale qui redirige vers l'app React
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 // Route permettant de traiter l'enregistrement d'un film dans la liste des favoris
 app.post('/api/save', (req, res) => {
@@ -52,6 +48,7 @@ app.post('/api/save', (req, res) => {
   } 
 });
 
+
 // Route d'accès aux données de data.json
 app.get('/api/favorites', (req, res) => {
   res.sendFile(__dirname + "/data.json");
@@ -61,6 +58,13 @@ app.get('/api/favorites', (req, res) => {
 app.post("/api/delete", (req, res) => {
   const imdbID = req.body // On récupère les données envoyées par le formulaire
   Delete(imdbID); // On appelle la fonction Delete en lui envoyant les données
+});
+
+// ------------------------- ROUTES CLIENT ------------------------- //
+
+// Route principale qui redirige vers l'app React
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 /** Lancement du serveur
