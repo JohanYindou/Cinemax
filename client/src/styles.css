@@ -225,6 +225,7 @@ nav {
   font-size: 1.3rem;
   background: #222;
   border-bottom: 1px solid #222;
+  box-shadow: 5px 5px 5px 5px #000000;
 }
 
 .nav {
